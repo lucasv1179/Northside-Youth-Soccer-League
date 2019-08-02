@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="./assets/images/favicon-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon-180x180.png">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link href="https://fonts.googleapis.com/css?family=family=Open+Sans%7CSquada+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>NYSL - Northside Youth Soccer League</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="firebaseui-auth-container" class="hidden"><div id="firebaseui-auth-container-background"></div></div>
+        <div id="/home" class="view hidden">
+            <header>
+                <div class="col-40">
+                    <img src="./assets/images/nysl_logo.png" alt="nysl logo">
+                </div><!--
+                --><div class="col-30 brand">
+                    <h1>nysl</h1>
+                </div><!--
+                --><div class="col-30 log-in-out">
+                    <button id="sign-in-button" class="button"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+                    <button id="sign-out-button" class="button hidden"><i class="fas fa-sign-out-alt"></i> Sign
+                        out</button>
+                </div>
+            </header>
+            <main>
+                <section id="home-match">
+                    <button class="button buttonBig">today's match</button>
+                </section>
+                <section id="home-events">
+                    <button class="button buttonBig">events</button>
+                </section>
+                <section id="home-contact">
+                    <button class="button buttonBig">contact</button>
+                </section>
+            </main>
+        </div>
+        <div id="/match-info" class="view hidden">
+            <header>
+                <div class="col-70">
+                    <h1>Today's match</h1>
+                </div><!--
+                --><div class="col-30 log-in-out">
+
+                </div>
+            </header>
+            <main>
+                <section id="match-map">
+
+                </section>
+                <section id="match-address">
+                    <p>
+                        <span class="date"> </span> - <span class="time"> </span>
+                    </p>
+                    <p class="location">
+                        <span class="location-name"> </span><br>
+                        <span class="location-address"> </span>
+                    </p>
+                </section>
+            </main>
+
+        </div>
+        <div id="/calendar" class="view hidden">
+            <header>
+                <div class="col-70">
+                    <h1>Events Calendar</h1>
+                </div><!--
+                --><div class="col-30 log-in-out">
+
+                </div>
+            </header>
+            <main style="padding-right: 0; padding-left: 0;">
+                <section id="events">
+                    <iframe id="cal" src="./assets/calendar/index.html" style="border:0" allowfullscreen></iframe>
+                </section>
+            </main>
+        </div>
+        <div id="/event-details" class="view hidden">
+            <header>
+                <div class="col-70">
+                    <h1 id="event-title"> </h1>
+                </div><!--
+                --><div class="col-30 log-in-out">
+
+                </div>
+            </header>
+            <main>
+                <section id="event-map">
+
+                </section>
+                <section id="details">
+                    <p>
+                        <span class="date"> </span> - <span class="time"> </span>
+                    </p>
+                    <p class="location">
+                        <span class="location-name"> </span><br>
+                        <span class="location-address"> </span>
+                    </p>
+                    <p class="details"> </p>
+                </section>
+                <button id="event-messages-btn" class="button"><i class="fas fa-comments"></i> Messages for this event</button>
+                <section id="event-messages" class="hidden">
+                        
+                    <section class="" id="recent-posts-list">
+                        <div class="recent-posts-title">
+                            <h2 class="">Event Messages</h2>
+                        </div>
+                        <div class="posts-container">
+                            
+                        </div>
+                        <p id="posts-placeholder">There are no messages for this event.</p>
+                    </section>
+
+                    <section class="" id="add-post">
+                        <div class="">
+                            <div class="">
+                                <div class="">
+                                    <form id="message-form" action="#">
+                                        <div id="message-box" class="col-80">
+                                            <textarea placeholder="New message..." class="" rows="3"
+                                                id="new-post-message"></textarea>
+                                        </div><!--
+                                    --><div id="message-button" class="col-20">
+                                            <button type="submit" class="button">Send</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </section>
+            </main>
+        </div>
+
+        <div id="/contact" class="view hidden">
+            <header>
+                <div class="col-70">
+                    <h1>Contact</h1>
+                </div><!--
+                --><div class="col-30 log-in-out">
+
+                </div>
+            </header>
+            <main>
+                <section id="contact-info">
+                    <p>Please email us at: <a class="email" href="mailto:nysl@chisoccer.org">nysl@chisoccer.org <i
+                                class="fas fa-envelope"></i></a></p>
+                    <p>We will reply to your email as soon as we can.</p>
+                </section>
+            </main>
+        </div>
+        <div class="hidden">
+            <nav id="navigation">
+                <div class="col-1-2 nav">
+                    <button id="back-btn" class="button"><span class="fas fa-backward"></span> back</button>
+                </div><!--
+                --><div class="col-1-2 nav align-right">
+                    <button id="home-btn" class="button"><span class="fas fa-home"></span> home</button>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- FIREBASE -->
+    <script src="/__/firebase/5.10.1/firebase-app.js"></script>
+    <script src="/__/firebase/5.10.1/firebase-auth.js"></script>
+    <script src="/__/firebase/5.10.1/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <!-- END FIREBASE -->
+    <script src="./scripts/data.js"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>
